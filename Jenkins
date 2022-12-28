@@ -1,0 +1,58 @@
+pipeline {
+    agent any
+environment{
+    name= 'Rabin'
+}
+parameters {
+    string(name: 'person', defaultValue: 'Gaurav Shamra', description: "who are you")
+    booleanParam(name: 'isMale', defaultValue: true, description: "")
+    choice(name: 'City', choices: ['Jaipur','Kolkata'], description: "")
+}
+
+    stages {
+        stage('Hello') {
+            
+            environment {
+                username ='Naskar'
+            }
+            steps {
+                sh'''
+                ls
+                date
+                '''
+                sh 'echo "${name}"'
+                sh 'echo "${BUILD_ID}"'
+                sh 'echo "${username}"'
+                sh 'echo "${person}"'
+                sh 'echo "${City}"'
+            }
+        }
+        stage('Build') {
+           input {
+               message "Shold we continue"
+               ok "yes we should"
+           }
+           steps {
+              echo 'Deploy to prod'
+           }
+        }
+        
+        stage('Deploy to Prod') {
+            steps {
+                echo 'Deploy to prod'
+            }
+        }
+        
+    }
+      post{
+    always {    
+            echo 'Always prnt'
+        }
+    failure{    
+            echo 'Always prnt'
+        }
+    success{    
+            echo 'Always prnt'
+        }
+    }
+}
