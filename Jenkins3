@@ -23,7 +23,7 @@ pipeline{
             steps{
                 // Deploy on Container -> Plugin
                 
-                deploy adapters: [tomcat9(credentialsId: 'tomcatservertest', path: '', url: 'https://192.168.29.232:8080')], contextPath: '/app', war: '**/*.war'
+                deploy adapters: [tomcat9(credentialsId: 'tomcatservertest', path: '', url: 'https://192.168.29.232:8080')], contextPath: '/spring-boot-war-example', war: '**/*.war'
                 
             }
             
