@@ -1,0 +1,1 @@
+New-AzStorageAccount -ResourceGroupName MyResourceGroup -Name mypip34234342425 -Location westus -SkuName Standard_GRS
